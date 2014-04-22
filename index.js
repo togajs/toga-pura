@@ -62,6 +62,7 @@ proto.defaults = {
  */
 proto._transform = function (file, enc, cb) {
     var options = this.options;
+    var path = file && file.path;
     var toga = file && file.toga;
     var ast = toga && toga.ast;
 
@@ -69,8 +70,11 @@ proto._transform = function (file, enc, cb) {
         return cb();
     }
 
+    file.path = path + '.html';
     file.contents = new Buffer(handlebars.partials.index({
         title: options.title,
+        path: path.replace(file.cwd, ''),
+        ext: path.split('.').pop(),
         ast: ast
     }));
 

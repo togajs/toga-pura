@@ -32,11 +32,12 @@ describe('TogaPuraTailor', function () {
             cb(null, file);
         };
 
-        it('should', function (done) {
+        it('should convert AST to HTML', function (done) {
             vs.src(__dirname + '/fixtures/**/*.*')
                 .pipe(es.map(toAst))
                 .pipe(compiler())
                 .pipe(es.map(toConsole))
+                .pipe(vs.dest(__dirname + '/actual'))
                 .on('end', done);
         });
     });

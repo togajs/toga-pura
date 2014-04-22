@@ -2,11 +2,61 @@
 <html class="no-js" lang="en-us">
 <head>
     <title>{{title}}</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font: 12px/1 sans-serif;
+        }
+        code {
+            font: 0.9rem/1 monospace;
+        }
+        pre {
+            overflow-x: auto;
+            white-space: pre;
+        }
+        td, th {
+            text-align: left;
+            vertical-align: top;
+        }
+        .blocks {
+            font-size: 0;
+            position: relative;
+        }
+        .blocks:after {
+            background: #efd;
+            bottom: 0;
+            content: ' ';
+            display: block;
+            left: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+        }
+        .blocks > * {
+            display: inline-block;
+            font-size: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            position: relative;
+            min-height: 1rem;
+            vertical-align: top;
+            width: 50%;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
     <div class="site">
         <div class="site-hd">
             {{#block "header"}}
+                <h1>{{title}}</h1>
             {{/block}}
         </div>
 
