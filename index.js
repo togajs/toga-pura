@@ -56,7 +56,7 @@ proto.defaults = {
 
 /**
  * @method _transform
- * @param {String} file
+ * @param {Vinyl} file
  * @param {String} enc
  * @param {Function} cb
  */
@@ -70,7 +70,10 @@ proto._transform = function (file, enc, cb) {
         return cb();
     }
 
-    file.path = path + '.html';
+    // Create new path (this is gross)
+    file.path = file.base + file.path.replace(file.cwd, '').replace(/[\\\/]/g, '_') + '.html';
+
+    // Create new contents
     file.contents = new Buffer(handlebars.partials.index({
         title: options.title,
         path: path.replace(file.cwd, ''),
@@ -79,6 +82,7 @@ proto._transform = function (file, enc, cb) {
     }));
 
     this.push(file);
+
     cb();
 };
 
