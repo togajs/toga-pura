@@ -1,14 +1,10 @@
 # `toga-compiler-pura`
 
-> A light theme for Toga documentation.
+> The light theme for [Toga](http://togajs.github.io) documentation.
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url]
 
-A light theme for [Toga](http://togajs.github.io) documentation.
-
 ## Install
-
-With [Node.js](http://nodejs.org):
 
     $ npm install toga-compiler-pura
 
