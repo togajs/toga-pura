@@ -2,6 +2,12 @@
 
 A light theme for [Toga](http://togajs.github.io) documentation.
 
+## Install
+
+With [Node.js](http://nodejs.org):
+
+    $ npm install toga-compiler-pura
+
 ## Test
 
     $ npm test
