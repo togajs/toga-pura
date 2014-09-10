@@ -10,11 +10,11 @@ var proto,
 	File = require('vinyl'),
 	Transform = require('stream').Transform,
 	handlebars = require('handlebars'),
-	inherits = require('mout/lang/inheritPrototype'),
-	mixIn = require('mout/object/mixIn');
+	inherits = require('mtil/function/inherits'),
+	mixin = require('mtil/object/mixin');
 
-require('./lib/helpers')(handlebars);
-require('./lib/partials')(handlebars);
+require('./assets/helpers')(handlebars);
+require('./assets/partials')(handlebars);
 
 /**
  * @class TogaCompilerPura
@@ -32,7 +32,7 @@ function TogaCompilerPura(options) {
 	 * @property options
 	 * @type {Object}
 	 */
-	this.options = mixIn({}, this.defaults, options);
+	this.options = mixin({}, this.defaults, options);
 
 	/**
 	 * @property data

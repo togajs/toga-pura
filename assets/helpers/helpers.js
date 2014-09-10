@@ -1,7 +1,7 @@
 'use strict';
 
 var layouts = require('handlebars-layouts');
-var mixIn = require('mout/object/mixIn');
+var mixin = require('mtil/object/mixin');
 
 module.exports = function (handlebars) {
     layouts(handlebars);
@@ -10,7 +10,7 @@ module.exports = function (handlebars) {
         var template = handlebars.partials[partial.toLowerCase()];
 
         // Allow data mixins from options hash
-        var context = mixIn({}, options.hash, this);
+        var context = mixin({}, options.hash, this);
 
         // Partial template required
         if (typeof template === 'undefined') {

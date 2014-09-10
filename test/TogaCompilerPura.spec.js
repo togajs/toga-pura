@@ -18,21 +18,23 @@ describe('TogaPuraTailor', function () {
 		expect(c instanceof TogaCompilerPura).to.be(true);
 	});
 
-	describe('#_transform', function () {
-		var toAst = function (file, cb) {
-			file.toga = {
-				ast: JSON.parse(file.contents.toString())
+	describe('prototype', function () {
+		describe('_transform', function () {
+			var toAst = function (file, cb) {
+				file.toga = {
+					ast: JSON.parse(file.contents.toString())
+				};
+
+				cb(null, file);
 			};
 
-			cb(null, file);
-		};
-
-		it('should convert AST to HTML', function (done) {
-			vs.src(__dirname + '/fixtures/**/*.*')
-				.pipe(es.map(toAst))
-				.pipe(compiler())
-				.pipe(vs.dest(__dirname + '/actual'))
-				.on('end', done);
+			it('should convert AST to HTML', function (done) {
+				vs.src(__dirname + '/fixtures/**/*.*')
+					.pipe(es.map(toAst))
+					.pipe(compiler())
+					.pipe(vs.dest(__dirname + '/actual'))
+					.on('end', done);
+			});
 		});
 	});
 });
