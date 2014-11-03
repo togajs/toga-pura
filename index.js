@@ -7,53 +7,43 @@
  */
 
 var proto,
-	File = require('vinyl'),
 	Transform = require('stream').Transform,
 	handlebars = require('handlebars'),
 	inherits = require('mtil/function/inherits'),
-	mixin = require('mtil/object/mixin');
+	mixin = require('mtil/object/mixin'),
+
+	/**
+	 * Default options.
+	 */
+	defaults = {
+		title: 'Documentation'
+	};
 
 require('./assets/helpers')(handlebars);
 require('./assets/partials')(handlebars);
 
 /**
- * @class TogaCompilerPura
+ * @class PuraCompiler
  * @extends Transform
  *
  * @constructor
  * @param {Object} options
  */
-function TogaCompilerPura(options) {
-	if (!(this instanceof TogaCompilerPura)) {
-		return new TogaCompilerPura(options);
+function PuraCompiler(options) {
+	if (!(this instanceof PuraCompiler)) {
+		return new PuraCompiler(options);
 	}
 
 	/**
 	 * @property options
 	 * @type {Object}
 	 */
-	this.options = mixin({}, this.defaults, options);
-
-	/**
-	 * @property data
-	 * @type {Object}
-	 */
-	this.data = {};
+	this.options = mixin({}, defaults, options);
 
 	Transform.call(this, { objectMode: true });
 }
 
-proto = inherits(TogaCompilerPura, Transform);
-
-/**
- * Default options.
- *
- * @property defaults
- * @type {Object}
- */
-proto.defaults = {
-	title: 'Documentation'
-};
+proto = inherits(PuraCompiler, Transform);
 
 /**
  * @method _transform
@@ -64,14 +54,14 @@ proto.defaults = {
 proto._transform = function (file, enc, cb) {
 	var options = this.options,
 		path = file && file.path,
-		toga = file && file.toga,
-		ast = toga && toga.ast;
+		ast = file && file.ast;
 
 	if (!ast) {
 		return cb();
 	}
 
-	// Create new path (this is gross)
+	// Create new path
+	// TODO: refactor this
 	file.path = file.base + file.path.replace(file.cwd, '').replace(/[\\\/]/g, '_') + '.html';
 
 	// Create new contents
@@ -87,17 +77,4 @@ proto._transform = function (file, enc, cb) {
 	cb();
 };
 
-/**
- * @method _flush
- * @param {Function} cb
- */
-proto._flush = function (cb) {
-	this.push(new File({
-		path: 'data.json',
-		contents: new Buffer(JSON.stringify(this.data, null, 2))
-	}));
-
-	cb();
-};
-
-module.exports = TogaCompilerPura;
+exports.compiler = PuraCompiler;

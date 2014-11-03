@@ -8,14 +8,14 @@ var TogaCompilerPura = require('../index'),
 describe('TogaPuraTailor', function () {
 	var compiler = TogaCompilerPura;
 
-	it('should create an instance when invoked directly', function () {
-		var c = compiler();
-		expect(c instanceof TogaCompilerPura).to.be(true);
-	});
+	it('should create an instance', function () {
+		var a = compiler(),
+			b = new TogaCompilerPura();
 
-	it('should create an instance when called with `new`', function () {
-		var c = new TogaCompilerPura();
-		expect(c instanceof TogaCompilerPura).to.be(true);
+		expect(a).to.be.a(TogaCompilerPura);
+		expect(b).to.be.a(TogaCompilerPura);
+
+		expect(a).not.to.be(b);
 	});
 
 	describe('prototype', function () {
