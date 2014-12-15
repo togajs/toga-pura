@@ -1,26 +1,22 @@
 {
-  "name": "toga-compiler-pura",
-  "version": "0.1.1",
+  "name": "toga-pura",
+  "version": "0.1.2",
   "description": "A light theme for Toga documentation.",
   "keywords": [
-    "toga",
-    "compiler",
-    "documentation",
-    "docblock",
-    "docs",
-    "doc"
+    "togaplugin",
+    "compiler"
   ],
-  "homepage": "https://github.com/togajs/toga-compiler-pura",
-  "bugs": "https://github.com/togajs/toga-compiler-pura/issues",
+  "homepage": "https://github.com/togajs/toga-pura",
+  "bugs": "https://github.com/togajs/toga-pura/issues",
   "license": "MIT",
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/togajs/toga-compiler-pura.git"
+    "url": "https://github.com/togajs/toga-pura.git"
   },
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "gulp test && cat ./coverage/lcov.info | coveralls",
     "test": "gulp test"
   },
   "dependencies": {
@@ -40,9 +36,8 @@
     "gulp-jshint": "^1.8.4",
     "gulp-livereload": "^2.1.1",
     "gulp-mocha": "^1.0.0",
-    "gulp-watch": "^1.0.2",
     "jshint-stylish": "^0.4.0",
-    "vinyl-fs": "^0.3.7"
+    "toga": "^0.2.2"
   },
   "engines": {
     "node": ">= 0.10"
