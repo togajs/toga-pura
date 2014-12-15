@@ -1,22 +1,43 @@
 # `toga-pura`
 
-> The light theme for [Toga](http://togajs.github.io) documentation.
-
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url]
+
+A light theme for [Toga](http://togajs.github.io) documentation.
 
 ## Install
 
     $ npm install toga-pura
 
-## Test
+## Usage
 
-    $ npm test
+```js
+var toga = require('toga'),
+    js = require('toga-js'),
+    md = require('toga-markdown'),
+    pura = require('toga-pura'),
+
+    config = {
+        src: './src/assets/**/*.js',
+        dest: './web/docs'
+    };
+
+toga
+    .src(config.src)
+    .pipe(js.parser())
+    .pipe(md.formatter())
+    .pipe(pura.compiler())
+    .pipe(toga.dest(config.dest));
+```
 
 ## Contribute
 
 [![Tasks][waffle-img]][waffle-url] [![Chat][gitter-img]][gitter-url] [![Tip][gittip-img]][gittip-url]
 
 Standards for this project, including tests, code coverage, and semantics are enforced with a build tool. Pull requests must include passing tests with 100% code coverage and no linting errors.
+
+### Test
+
+    $ npm test
 
 ----
 

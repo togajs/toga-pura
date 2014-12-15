@@ -1,6 +1,6 @@
 {
   "name": "toga-pura",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A light theme for Toga documentation.",
   "keywords": [
     "togaplugin",
@@ -16,7 +16,7 @@
     "url": "https://github.com/togajs/toga-pura.git"
   },
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "gulp test && cat ./coverage/lcov.info | coveralls",
     "test": "gulp test"
   },
   "dependencies": {
