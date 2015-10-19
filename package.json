@@ -1,0 +1,42 @@
+{
+  "name": "toga-pura",
+  "version": "0.1.2",
+  "description": "A light theme for Toga documentation.",
+  "keywords": [
+    "togaplugin",
+    "compiler"
+  ],
+  "homepage": "https://github.com/togajs/toga-pura",
+  "bugs": "https://github.com/togajs/toga-pura/issues",
+  "license": "MIT",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "main": "dist/toga-pura.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/togajs/toga-pura.git"
+  },
+  "dependencies": {
+    "trabea": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.1",
+    "babel-istanbul": "^0.3.19",
+    "coveralls": "^2.11.4",
+    "eslint": "^1.3.1",
+    "expect": "^1.9.0",
+    "mocha": "^2.3.0",
+    "nodemon": "^1.4.1",
+    "stream-array": "^1.1.1",
+    "toga": "^0.5.1",
+    "vinyl-fs": "^1.0.0"
+  },
+  "scripts": {
+    "all": "npm run lint && npm run test && npm run build",
+    "build": "babel src --out-dir dist",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint src/*.js test/*.js",
+    "test": "babel-node node_modules/.bin/babel-istanbul cover --report text --report lcov --root src node_modules/.bin/_mocha -- 'test/*.js'",
+    "watch": "nodemon --exec 'npm run test' --watch src --watch test"
+  }
+}
