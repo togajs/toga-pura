@@ -41,9 +41,7 @@ Standards for this project, including tests, code coverage, and semantics are en
 
 ----
 
-© 2014 Shannon Moeller <me@shannonmoeller.com>
-
-Licensed under [MIT](http://shannonmoeller.com/mit.txt)
+MIT © [Shannon Moeller](http://shannonmoeller.com)
 
 [coveralls-img]: http://img.shields.io/coveralls/togajs/toga-pura/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/togajs/toga-pura
